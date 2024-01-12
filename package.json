@@ -1,0 +1,19 @@
+{
+  "name": "from-scratch",
+  "version": "1.0.0",
+  "description": "building a react app from scratch",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cgalatro2/from-scratch.git"
+  },
+  "author": "cgalatro2",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cgalatro2/from-scratch/issues"
+  },
+  "homepage": "https://github.com/cgalatro2/from-scratch#readme"
+}
