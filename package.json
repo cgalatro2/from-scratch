@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/cgalatro2/from-scratch#readme",
   "devDependencies": {
+    "html-webpack-plugin": "^5.6.0",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
   }
