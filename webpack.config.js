@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   plugins: [
     new HtmlWebpackPlugin({
       title: "create-react-app",
@@ -16,19 +16,19 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?[jt]sx?$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-react"],
-          },
-        },
+        use: ["babel-loader"],
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: ["ts-loader"],
       },
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".tsx", ".ts", ".js"],
   },
   output: {
     filename: "[name].bundle.js",
