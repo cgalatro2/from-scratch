@@ -1,41 +1,42 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  mode: "development",
-  entry: "./src/index.tsx",
+  mode: 'development',
+  entry: './src/index.tsx',
   plugins: [
     new HtmlWebpackPlugin({
-      title: "create-react-app",
-    }),
+      title: 'From Scratch'
+    })
   ],
-  devtool: "inline-source-map",
+  devtool: 'inline-source-map',
   devServer: {
-    static: "./dist",
+    static: './dist'
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"],
+        use: ['babel-loader']
       },
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: ["ts-loader"],
-      },
-    ],
+        use: ['ts-loader']
+      }
+    ]
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: ['.tsx', '.ts', '.js']
   },
   output: {
-    filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist"),
-    clean: true,
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true
   },
   optimization: {
-    runtimeChunk: "single",
-  },
-};
+    runtimeChunk: 'single'
+  }
+}
