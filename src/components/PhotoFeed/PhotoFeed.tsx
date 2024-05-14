@@ -7,6 +7,26 @@ const unsplash = createApi({
   accessKey: `${process.env.UNSPLASH_ACCESS_KEY}`
 })
 
+const NewPhotosButton = ({
+  onNewPhotosClick
+}: {
+  onNewPhotosClick: () => void
+}): React.ReactNode => {
+  return (
+    <button
+      onClick={onNewPhotosClick}
+      style={{
+        margin: '20px auto',
+        padding: '10px 20px',
+        fontSize: '16px',
+        cursor: 'pointer'
+      }}
+    >
+      New ones
+    </button>
+  )
+}
+
 const PhotoFeed = (): React.ReactNode => {
   const [photos, setPhotos] = useState<any>([])
 
@@ -43,17 +63,7 @@ const PhotoFeed = (): React.ReactNode => {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <button
-        onClick={onNewPhotosClick}
-        style={{
-          margin: '20px auto',
-          padding: '10px 20px',
-          fontSize: '16px',
-          cursor: 'pointer'
-        }}
-      >
-        New ones
-      </button>
+      <NewPhotosButton onNewPhotosClick={onNewPhotosClick} />
       <div
         style={{
           display: 'grid',
@@ -81,17 +91,7 @@ const PhotoFeed = (): React.ReactNode => {
           </div>
         ))}
       </div>
-      <button
-        onClick={onNewPhotosClick}
-        style={{
-          margin: '20px auto',
-          padding: '10px 20px',
-          fontSize: '16px',
-          cursor: 'pointer'
-        }}
-      >
-        New ones
-      </button>
+      <NewPhotosButton onNewPhotosClick={onNewPhotosClick} />
     </div>
   )
 }
