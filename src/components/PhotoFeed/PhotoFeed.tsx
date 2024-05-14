@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { createApi } from 'unsplash-js'
 
-import { UnsplashPhoto } from './types'
+import { type UnsplashPhoto } from './types'
 
 const unsplash = createApi({
   accessKey: `${process.env.UNSPLASH_ACCESS_KEY}`
 })
 
-const PhotoFeed = () => {
+const PhotoFeed = (): React.ReactNode => {
   const [photos, setPhotos] = useState<any>([])
 
-  const getPhotos = () =>
-    unsplash.photos
+  const getPhotos = async (): Promise<void> => {
+    await unsplash.photos
       .getRandom({ count: 20 })
       .then((result) => {
         if (result.type === 'success') {
@@ -24,16 +24,27 @@ const PhotoFeed = () => {
           console.error('Error fetching photos:', result.errors)
         }
       })
-      .catch((error) => console.error('Fetch error:', error))
+      .catch((error) => {
+        console.error('Fetch error:', error)
+      })
+  }
 
   useEffect(() => {
-    getPhotos()
+    getPhotos().catch((err) => {
+      console.log('Error while fetching photos', err)
+    })
   }, [])
+
+  const onNewPhotosClick = (): void => {
+    getPhotos().catch((err) => {
+      console.log('Error while fetching photos', err)
+    })
+  }
 
   return (
     <div style={{ textAlign: 'center' }}>
       <button
-        onClick={getPhotos}
+        onClick={onNewPhotosClick}
         style={{
           margin: '20px auto',
           padding: '10px 20px',
@@ -60,7 +71,7 @@ const PhotoFeed = () => {
           >
             <img
               src={photo.urls.small}
-              alt={photo.alt_description || 'Unsplash photo'}
+              alt={photo.alt_description ?? 'Unsplash photo'}
               style={{
                 width: '100%',
                 height: '100%',
@@ -71,7 +82,7 @@ const PhotoFeed = () => {
         ))}
       </div>
       <button
-        onClick={getPhotos}
+        onClick={onNewPhotosClick}
         style={{
           margin: '20px auto',
           padding: '10px 20px',
