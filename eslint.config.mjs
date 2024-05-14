@@ -18,15 +18,7 @@ export default [
   {
     languageOptions: { globals: globals.browser },
     files: ['src/**/*.js', 'src/**/*.jsx', 'src/**/*.ts', 'src/**/*.tsx'],
-    ignores: ['*.config.*'],
-    overrides: [
-      {
-        files: ['webpack.config.js'],
-        rules: {
-          '@typescript-eslint/no-var-requires': 'off'
-        }
-      }
-    ]
+    ignores: ['*.config.*']
   },
   ...compat.extends('standard-with-typescript'),
   pluginReactConfig
