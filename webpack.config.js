@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 module.exports = {
   mode: 'development',
@@ -8,6 +12,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'From Scratch'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.UNSPLASH_ACCESS_KEY': JSON.stringify(
+        process.env.UNSPLASH_ACCESS_KEY
+      )
     })
   ],
   devtool: 'inline-source-map',

@@ -4,7 +4,7 @@ import { createApi } from 'unsplash-js'
 import { UnsplashPhoto } from './types'
 
 const unsplash = createApi({
-  accessKey: ''
+  accessKey: `${process.env.UNSPLASH_ACCESS_KEY}`
 })
 
 const PhotoFeed = () => {
