@@ -29,16 +29,16 @@ const PhotoFeed = (): React.ReactNode => {
       })
   }
 
+  const handleFetchError = (err: Error): void => {
+    console.log('Error while fetching photos', err.message)
+  }
+
   useEffect(() => {
-    getPhotos().catch((err) => {
-      console.log('Error while fetching photos', err)
-    })
+    getPhotos().catch(handleFetchError)
   }, [])
 
   const onNewPhotosClick = (): void => {
-    getPhotos().catch((err) => {
-      console.log('Error while fetching photos', err)
-    })
+    getPhotos().catch(handleFetchError)
   }
 
   return (
