@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
@@ -7,7 +6,6 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 module.exports = {
-  mode: 'development',
   entry: './src/index.tsx',
   plugins: [
     new HtmlWebpackPlugin({
@@ -19,10 +17,6 @@ module.exports = {
       )
     })
   ],
-  devtool: 'inline-source-map',
-  devServer: {
-    static: './dist'
-  },
   module: {
     rules: [
       {
@@ -44,8 +38,5 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true
-  },
-  optimization: {
-    runtimeChunk: 'single'
   }
 }
